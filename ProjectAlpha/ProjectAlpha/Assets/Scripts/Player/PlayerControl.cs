@@ -7,12 +7,12 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     public float speed;
 
-    private Vector2 moveDirection;
-    private Rigidbody2D body;
+    private Vector3 moveDirection;
+    private Rigidbody body;
 
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -22,7 +22,8 @@ public class PlayerControl : MonoBehaviour
 
     void LookAtCursor()
     {
-        Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+        //Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+        Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Camera.main.transform.position.y, Input.mousePosition.z));
         lookPos = lookPos - transform.position;
         float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -31,7 +32,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         LookAtCursor();
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         moveDirection = moveInput.normalized * speed;
     }
 }
