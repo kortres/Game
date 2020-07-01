@@ -23,6 +23,7 @@ public class Player3DController : MonoBehaviour
         if (Physics.Raycast(ray, out rh))
         {
             mousePos = rh.point;
+            mousePos.y = transform.position.y;
         }
     }
 
