@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:ProjectAlpha/ProjectAlpha/Assets/Prefab/Bullets.meta
 guid: 9cce3979fb4f95840811de0575c78194
+=======
+guid: 7439d1b4f09a81749ac7012b2024d30d
+>>>>>>> Stashed changes:ProjectAlpha/ProjectAlpha/Assets/Sprites/Bullet.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
