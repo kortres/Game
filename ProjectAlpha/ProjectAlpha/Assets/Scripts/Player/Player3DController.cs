@@ -30,7 +30,6 @@ public class Player3DController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        Debug.Log(mousePos);
         Vector3 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.z, lookDir.x) * Mathf.Rad2Deg - 180f;
         rb.rotation = Quaternion.AngleAxis(angle, -Vector3.up);

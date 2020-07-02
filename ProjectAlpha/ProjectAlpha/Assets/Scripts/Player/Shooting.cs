@@ -8,10 +8,31 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;
 
     public float bulletForce;
+    public float shootingPeriod;
+    private float currTime;
+
+    private bool isShooting = false;
+
+    private void Start()
+    {
+        currTime = shootingPeriod;
+    }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
+        {
+            isShooting = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isShooting = false;
+            currTime = shootingPeriod;
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (isShooting)
         {
             Shoot();
         }
@@ -19,8 +40,13 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(-firepoint.right * bulletForce, ForceMode.Impulse);
+        currTime += Time.fixedDeltaTime;
+        if (currTime >= shootingPeriod)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(-firepoint.right * bulletForce, ForceMode.Impulse);
+            currTime = 0;
+        }
     }
 }

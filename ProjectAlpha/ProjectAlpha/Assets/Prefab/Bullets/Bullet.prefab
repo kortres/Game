@@ -156,3 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiteEffect: {fileID: 0}
   bulletDamage: 20
+  enemyTag: Enemy
