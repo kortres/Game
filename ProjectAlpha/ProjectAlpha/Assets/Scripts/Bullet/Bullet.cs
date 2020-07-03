@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //creating object of effect and destroying it
+        Instantiate(hiteEffect, transform.position - transform.position*0.02f, transform.rotation);
+        Destroy(hiteEffect);
         if (collision.gameObject.tag == enemyTag)
         {
             Creature enemy = collision.gameObject.GetComponent<Creature>();

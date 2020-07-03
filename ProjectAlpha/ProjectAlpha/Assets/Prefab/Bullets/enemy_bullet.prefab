@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b80e1a7a7453041b0fb1795df4a7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hiteEffect: {fileID: 0}
+  hiteEffect: {fileID: 2820387700164874629, guid: 948d3dabe3298cf44b7a967a8c2b8ea4,
+    type: 3}
   bulletDamage: 20
   enemyTag: Player
