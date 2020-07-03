@@ -6,9 +6,7 @@ public class EnemyShooting : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firepoint;
-    private Vector3 lookDir;
-    private Ray los;
-    private RaycastHit rh;
+    private EnemyAI ai;
 
     public float bulletForce;
     public float shootingPeriod;
@@ -16,19 +14,14 @@ public class EnemyShooting : MonoBehaviour
 
     private void Start()
     {
-       lookDir = GetComponent<EnemyAI>().lookDir;
+       ai = GetComponent<EnemyAI>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Shoot();
-        los = new Ray(transform.position, lookDir);
-        if (Physics.Raycast(los, out rh))
+        if (ai.isInSight)
         {
-            if (rh.collider.gameObject.tag == "Player")
-            {
-                Shoot();
-            }
+            Shoot();
         }
     }
 

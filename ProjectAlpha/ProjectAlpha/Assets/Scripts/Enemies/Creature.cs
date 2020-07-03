@@ -19,7 +19,6 @@ public class Creature : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currHealth);
         if (currHealth <= 0)
         {
             Destroy(gameObject);
